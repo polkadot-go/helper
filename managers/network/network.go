@@ -67,9 +67,12 @@ func (n *NetworkManager) checkNetwork() {
 	start := time.Now()
 
 	// Example network check - verify database connection
-	if err := n.store.Query(ctx, "SELECT 1").Err(); err != nil {
+	rows, err := n.store.Query(ctx, "SELECT 1")
+	if err != nil {
 		n.logger.Error("Network check failed: %v", err)
 		core.IncrCounter("network.check.failed")
+	} else {
+		rows.Close()
 	}
 
 	core.RecordDuration("network.check", start)
