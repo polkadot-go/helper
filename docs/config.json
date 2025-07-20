@@ -1,0 +1,9 @@
+{
+    "mysql": {
+        "host": "localhost",
+        "password": "secret123"
+    },
+    "network": {
+        "rpcEndpoint": "wss://polkadot.api.onfinality.io/public-ws"
+    }
+}
